@@ -6,4 +6,7 @@
     <string name="enter_your_email">Enter your Email:</string>
     <string name="enter_your_password">Enter your password:</string>
     <string name="logged_in">Logged in</string>
+    <string name="john">Name: John</string>
+    <string name="job_id_5679">Job Id: 5679</string>
+    <string name="dept_it">Dept: IT</string>
 </resources>

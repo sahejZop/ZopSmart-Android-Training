@@ -6,7 +6,8 @@
         <entry key="app/src/main/res/drawable/textviewshape.xml" value="0.162" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11231884057971014" />
         <entry key="app/src/main/res/layout/fragment_fragment1.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/fragment_fragment2.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_fragment2.xml" value="0.16822916666666668" />
+        <entry key="app/src/main/res/layout/userlistscreen.xml" value="0.25" />
       </map>
     </option>
   </component>
