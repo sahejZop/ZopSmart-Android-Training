@@ -19,7 +19,7 @@ import com.example.loginform.databinding.FragmentFragment1Binding
  * Use the [fragment1.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment1 : Fragment(R.layout.fragment_fragment1) {
+class fragment1 : Fragment() {
 
     val tag_:String = "frag1"
     private lateinit var binding: FragmentFragment1Binding
