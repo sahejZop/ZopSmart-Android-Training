@@ -1,17 +1,15 @@
-package com.example.loginform
+package com.example.loginform.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import androidx.databinding.DataBindingUtil
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.loginform.databinding.ActivityMainBinding
+import com.example.loginform.Frag1ViewModel
+import com.example.loginform.R
 import com.example.loginform.databinding.FragmentFragment1Binding
 
 /**
@@ -25,6 +23,10 @@ class fragment1 : Fragment() {
     private lateinit var binding: FragmentFragment1Binding
     private lateinit var f1viewModel: Frag1ViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
@@ -36,18 +38,20 @@ class fragment1 : Fragment() {
         binding = FragmentFragment1Binding.inflate(layoutInflater)
         f1viewModel = ViewModelProvider(this).get(Frag1ViewModel::class.java)
 
-        binding.bt1.setOnClickListener{
+        binding.bt1.setOnClickListener {
             val email: String = binding.et1.text.toString()
             val pwd: String = binding.et2.text.toString()
-            if (checkSignIn(email, pwd))
-            {
+            if (checkSignIn(email, pwd)) {
                 activity?.supportFragmentManager?.beginTransaction()?.apply {
                     replace(R.id.fl, secondfrag)
                     commit()
                 }
             }
-            binding.et1.error = "fields are typed wrong"
-            return@setOnClickListener
+            else {
+                binding.et1.error = "fields are typed wrong"
+                Toast.makeText(activity?.applicationContext, "Fields are typed wrong", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
         }
         return binding.root
     }

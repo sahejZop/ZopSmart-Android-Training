@@ -9,4 +9,6 @@
     <string name="john">Name: John</string>
     <string name="job_id_5679">Job Id: 5679</string>
     <string name="dept_it">Dept: IT</string>
+    <string name="login_form">Login Form</string>
+    <string name="list_of_users">List of Users</string>
 </resources>

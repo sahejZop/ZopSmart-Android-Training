@@ -1,16 +1,18 @@
-package com.example.loginform
+package com.example.loginform.fragments
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.loginform.databinding.FragmentFragment1Binding
+import com.example.loginform.R
+import com.example.loginform.RecyclerAdapter
 import com.example.loginform.databinding.FragmentFragment2Binding
-import java.nio.file.Files.find
 
 /**
  * A simple [Fragment] subclass.
@@ -22,6 +24,11 @@ class fragment2 : Fragment(R.layout.fragment_fragment2) {
     lateinit var binding: FragmentFragment2Binding
     var layoutManager: RecyclerView.LayoutManager? = null
     var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+
+    val data : List<List<String>> = listOf(listOf("John","1234","IT"),
+        listOf("John","1234","IT"),listOf("John","1234","IT"),listOf("John","1234","IT"),
+        listOf("John","1234","IT"),listOf("John","1234","IT"),listOf("John","1234","IT"),
+        listOf("John","1234","IT"),listOf("John","1234","IT"),listOf("John","1234","IT"))
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +44,7 @@ class fragment2 : Fragment(R.layout.fragment_fragment2) {
         super.onViewCreated(view, savedInstanceState)
         binding.userList.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = RecyclerAdapter()
+            adapter = RecyclerAdapter(data)
         }
     }
 }

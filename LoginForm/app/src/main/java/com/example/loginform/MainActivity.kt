@@ -2,7 +2,7 @@ package com.example.loginform
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.loginform.databinding.ActivityMainBinding
+import com.example.loginform.fragments.fragment1
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,11 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
-
-    private val namearr = arrayOf("John", "Smith","John", "Smith","John", "Smith","John", "Smith","John", "Smith")
-    private val jobId = arrayOf("1234" , "5678","1234" , "5678","1234" , "5678","1234" , "5678","1234" , "5678")
-    private val dept = arrayOf("IT", "IT","IT", "IT","IT", "IT","IT", "IT","IT", "IT")
+class RecyclerAdapter(val dataList: List<List<String>>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.userlistscreen, parent, false)
@@ -20,14 +16,14 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemname.text = namearr[position]
-        holder.itemjobId.text = jobId[position]
-        holder.itemdept.text = dept[position]
+        holder.itemname.text = "Name:"  + dataList[position][0]
+        holder.itemjobId.text = "Job ID:" + dataList[position][1]
+        holder.itemdept.text = "Dept.: " + dataList[position][2]
         //holder.itemimgView.setImageResource()
     }
 
     override fun getItemCount(): Int {
-        return namearr.size
+        return dataList.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
