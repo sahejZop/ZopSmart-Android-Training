@@ -1,18 +1,21 @@
 package com.example.loginform.fragments
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.loginform.Api.ApiService
 import com.example.loginform.R
 import com.example.loginform.RecyclerAdapter
 import com.example.loginform.databinding.FragmentFragment2Binding
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import com.example.loginform.Api.retrofitInstance
+import retrofit2.Callback
+import retrofit2.create
 
 /**
  * A simple [Fragment] subclass.
@@ -29,6 +32,7 @@ class fragment2 : Fragment(R.layout.fragment_fragment2) {
         listOf("John","1234","IT"),listOf("John","1234","IT"),listOf("John","1234","IT"),
         listOf("John","1234","IT"),listOf("John","1234","IT"),listOf("John","1234","IT"),
         listOf("John","1234","IT"),listOf("John","1234","IT"),listOf("John","1234","IT"))
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

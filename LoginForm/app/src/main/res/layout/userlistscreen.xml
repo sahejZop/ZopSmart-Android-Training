@@ -37,7 +37,7 @@
             />
 
         <TextView
-            android:id="@+id/textId"
+            android:id="@+id/username"
             android:text="@string/job_id_5679"
             android:textSize="20sp"
             android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
             />
 
         <TextView
-            android:id="@+id/textDepartment"
+            android:id="@+id/email"
             android:text="@string/dept_it"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
