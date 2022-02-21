@@ -16,9 +16,9 @@ class RecyclerAdapter(val dataList: List<List<String>>) : RecyclerView.Adapter<R
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemname.text = "Name:"  + dataList[position][0]
-        holder.itemjobId.text = "Job ID:" + dataList[position][1]
-        holder.itemdept.text = "Dept.: " + dataList[position][2]
+        holder.itemname.text = dataList[position][0]
+        holder.itemjobId.text = dataList[position][1]
+        holder.itemdept.text = dataList[position][2]
         //holder.itemimgView.setImageResource()
     }
 
@@ -28,8 +28,8 @@ class RecyclerAdapter(val dataList: List<List<String>>) : RecyclerView.Adapter<R
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var itemname: TextView = itemView.findViewById(R.id.textName)
-        var itemjobId: TextView = itemView.findViewById(R.id.textId)
-        var itemdept: TextView = itemView.findViewById(R.id.textDepartment)
+        var itemjobId: TextView = itemView.findViewById(R.id.username)
+        var itemdept: TextView = itemView.findViewById(R.id.email)
         var itemimgView: ImageView = itemView.findViewById(R.id.usrImage)
 
     }

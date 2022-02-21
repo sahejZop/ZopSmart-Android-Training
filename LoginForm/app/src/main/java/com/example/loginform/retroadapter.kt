@@ -14,11 +14,13 @@ class retroadapter(val context: Context, val data: List<User>) : RecyclerView.Ad
 
     lateinit var binding : UserlistscreenBinding
 
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): retroadapter.retroViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.userlistscreen, parent, false)
+        binding = UserlistscreenBinding.bind(view)
         return retroViewHolder(view)
     }
 
