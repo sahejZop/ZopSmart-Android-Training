@@ -1,5 +1,5 @@
 package com.example.tmdb.data
 
 data class MovieData(
-    val name: String
+    val name1: String,
 )

@@ -22,15 +22,15 @@ class dashboardrecycleradapter(val context: Context, val moviesList : List<Movie
 
     override fun onBindViewHolder(holder: dashboardrecycleradapter.viewHolder, position: Int) {
         val dataObj = moviesList[position]
-        holder.name.text = dataObj.name
+        holder.moviename1.text = dataObj.name1
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return moviesList.size
     }
 
     inner class viewHolder(view: View): RecyclerView.ViewHolder(view){
-        var name = binding.movienameText
+        var moviename1 = binding.movienameText
     }
 
 }
