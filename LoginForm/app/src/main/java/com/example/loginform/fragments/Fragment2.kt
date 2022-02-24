@@ -56,7 +56,6 @@ class fragment2 : Fragment(R.layout.fragment_fragment2) {
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                TODO("Not yet implemented")
             }
 
         })

@@ -12,12 +12,13 @@ import com.example.tmdb.R
 import com.example.tmdb.adapters.dashboardrecycleradapter
 import com.example.tmdb.data.MovieData
 import com.example.tmdb.databinding.DashboardBinding
+import com.example.tmdb.repository.Repository
 import com.example.tmdb.viewmodels.dashboardViewModel
 
 class DashboardFragment : Fragment(){
 
     lateinit var binding: DashboardBinding
-    private lateinit var dashViewModelobj: dashboardViewModel
+    private var repository = Repository()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +28,7 @@ class DashboardFragment : Fragment(){
 
         val view = inflater.inflate(R.layout.dashboard, container, false)
         binding = DashboardBinding.inflate(layoutInflater)
-        dashViewModelobj = ViewModelProvider(this).get(dashboardViewModel::class.java)
+        //dashViewModelobj = ViewModelProvider(this).get(dashboardViewModel::class.java)
 
         val data: List<MovieData>? = getMovies()
         /*
@@ -44,6 +45,6 @@ class DashboardFragment : Fragment(){
     }
 
     private fun getMovies(): List<MovieData>? {
-        return dashViewModelobj.getMovies()
+        return repository.getMovies()
     }
 }

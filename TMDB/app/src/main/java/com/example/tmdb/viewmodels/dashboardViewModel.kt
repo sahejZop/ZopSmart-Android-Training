@@ -17,26 +17,4 @@ class dashboardViewModel: ViewModel(){
 
     lateinit var binding: DashboardBinding
 
-    fun getMovies(): List<MovieData>? {
-
-        val movieList = MovieApiInstance.api.getMovieList()
-        var data: List<MovieData>? = null
-
-        movieList.enqueue(object : Callback<List<MovieData>> {
-
-            override fun onResponse(
-                call: Call<List<MovieData>>,
-                response: Response<List<MovieData>>
-            ) {
-                data = response.body()
-            }
-
-            override fun onFailure(call: Call<List<MovieData>>, t: Throwable) {
-                Log.d("viewmodel", "error")
-                //TODO("Not yet implemented")
-            }
-        })
-
-            return data
-    }
 }
