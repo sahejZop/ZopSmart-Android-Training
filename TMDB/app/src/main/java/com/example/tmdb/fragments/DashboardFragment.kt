@@ -1,6 +1,7 @@
 package com.example.tmdb.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tmdb.R
 import com.example.tmdb.adapters.dashboardrecycleradapter
+import com.example.tmdb.apiServices.MovieApiInstance
 import com.example.tmdb.data.MovieData
+import com.example.tmdb.data.MovieListData
 import com.example.tmdb.databinding.DashboardBinding
 import com.example.tmdb.repository.Repository
 import com.example.tmdb.viewmodels.dashboardViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardFragment : Fragment(){
 
@@ -26,25 +32,49 @@ class DashboardFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
 
-        val view = inflater.inflate(R.layout.dashboard, container, false)
-        binding = DashboardBinding.inflate(layoutInflater)
-        //dashViewModelobj = ViewModelProvider(this).get(dashboardViewModel::class.java)
-
-        val data: List<MovieData>? = getMovies()
         /*
-        val data: List<MovieData>? = listOf(MovieData("Schindler' List", "9.6",".",
-        "1993"))
+        val view = inflater.inflate(R.layout.dashboard, container, false)
+        dashViewModelobj = ViewModelProvider(this).get(dashboardViewModel::class.java)
+        val data: List<MovieData>? = getMovies()
          */
 
-        binding.movieslist.apply {
-            layoutManager = GridLayoutManager(activity, 3)
-            adapter = dashboardrecycleradapter(context, data)
-        }
-
+        binding = DashboardBinding.inflate(layoutInflater)
         return binding.root
     }
 
-    private fun getMovies(): List<MovieData>? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val movieList = MovieApiInstance.api.getMovieList()
+        movieList.enqueue(object : Callback<MovieListData> {
+
+            override fun onResponse(
+                call: Call<MovieListData>,
+                response: Response<MovieListData>
+            ) {
+                val data = response.body()
+                if (data == null)
+                    Log.d("dashboard", "response is null")
+
+                else
+                {
+                    Log.d("dashboard", "response is good")
+                    binding.movieslist.apply {
+                        layoutManager = GridLayoutManager(activity, 3)
+                        adapter = dashboardrecycleradapter(context, data)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MovieListData>, t: Throwable) {
+                Log.d("dashboard", "$t")
+                //TODO("Not yet implemented")
+            }
+        })
+
+    }
+
+    private fun getMovies(): MovieListData? {
         return repository.getMovies()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.loginform.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,7 @@ class fragment2 : Fragment(R.layout.fragment_fragment2) {
                 val data = response.body()
                 if (data != null)
                 {
+                    Log.d("frag2", "working")
                     binding.userList.apply {
                         layoutManager = LinearLayoutManager(activity)
                         adapter = retroadapter(context, data)

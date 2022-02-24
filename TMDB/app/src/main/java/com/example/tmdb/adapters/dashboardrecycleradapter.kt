@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tmdb.R
 import com.example.tmdb.data.MovieData
+import com.example.tmdb.data.MovieListData
 import com.example.tmdb.databinding.MoviecardBinding
 
-class dashboardrecycleradapter(val context: Context, val moviesList : List<MovieData>?) : RecyclerView.Adapter<dashboardrecycleradapter.viewHolder>() {
+class dashboardrecycleradapter(val context: Context, val moviesList : MovieListData) : RecyclerView.Adapter<dashboardrecycleradapter.viewHolder>() {
 
     lateinit var binding : MoviecardBinding
 
@@ -22,10 +23,10 @@ class dashboardrecycleradapter(val context: Context, val moviesList : List<Movie
     }
 
     override fun onBindViewHolder(holder: dashboardrecycleradapter.viewHolder, position: Int) {
-        val dataObj = moviesList?.get(position)
-        holder.moviename.text = dataObj?.title
-        holder.rating.text = dataObj?.vote_average
-        holder.releaseDate.text = dataObj?.release_date
+        val dataObj = moviesList.results[position]
+        holder.moviename.text = dataObj.title
+        holder.rating.text = dataObj.vote_average
+        holder.releaseDate.text = dataObj.release_date
 
     }
 
@@ -35,7 +36,7 @@ class dashboardrecycleradapter(val context: Context, val moviesList : List<Movie
             Log.d("adapter", "null h")
             return 0
         }
-        return moviesList.size
+        return moviesList.results.size
     }
 
     inner class viewHolder(view: View): RecyclerView.ViewHolder(view){
