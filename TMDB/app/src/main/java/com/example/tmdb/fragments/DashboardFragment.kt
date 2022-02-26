@@ -25,6 +25,7 @@ class DashboardFragment : Fragment(){
 
     lateinit var binding: DashboardBinding
     private var repository = Repository()
+    var data: MovieListData? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +36,8 @@ class DashboardFragment : Fragment(){
         /*
         val view = inflater.inflate(R.layout.dashboard, container, false)
         dashViewModelobj = ViewModelProvider(this).get(dashboardViewModel::class.java)
-        val data: List<MovieData>? = getMovies()
          */
+        data = getMovies()
 
         binding = DashboardBinding.inflate(layoutInflater)
         return binding.root
@@ -45,6 +46,18 @@ class DashboardFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (data != null)
+        {
+            Log.d("dash", "data not null")
+            binding.movieslist.apply {
+                layoutManager = GridLayoutManager(activity, 3)
+                adapter = dashboardrecycleradapter(context, data!!)
+            }
+        }
+        else {
+            Log.d("dash", "data is null")
+        }
+        /*
         val movieList = MovieApiInstance.api.getMovieList()
         movieList.enqueue(object : Callback<MovieListData> {
 
@@ -72,7 +85,9 @@ class DashboardFragment : Fragment(){
             }
         })
 
+         */
     }
+
 
     private fun getMovies(): MovieListData? {
         return repository.getMovies()

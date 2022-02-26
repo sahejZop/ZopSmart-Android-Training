@@ -24,7 +24,9 @@ class Repository {
                 Log.d("repo", "received response")
                 data = response.body()
                 if (data == null)
+                {
                     Log.d("repo", "response received is null")
+                }
             }
 
             override fun onFailure(call: Call<MovieListData>, t: Throwable) {
